@@ -48,7 +48,7 @@ class HomePage extends StatelessWidget {
     
       body: Center(
         child: Text(
-          'This Home Page you should coding here',
+          'This Home Page',
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
       ),
