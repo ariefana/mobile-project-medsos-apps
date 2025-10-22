@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:medsos_app/pages/homepage.dart';
 import 'package:medsos_app/pages/messagePage.dart';
+import 'package:medsos_app/pages/notifPage.dart';
+import 'package:medsos_app/pages/profilePage.dart';
 
 class MyMainPage extends StatefulWidget {
   const MyMainPage({super.key});
@@ -14,7 +16,12 @@ class _MyWidgetState extends State<MyMainPage> {
   int _selectedIndex = 0;
 
   // List dari semua halaman widget yang akan ditampilkan
-  static const List<Widget> _pages = <Widget>[HomePage(), MessagesPage()];
+  static const List<Widget> _pages = <Widget>[
+    HomePage(), 
+    MessagesPage(),
+    NotifPage(),
+    Profilepage()
+    ];
 
   // Fungsi untuk mengubah state saat item ditekan
   void _onItemTapped(int index) {
