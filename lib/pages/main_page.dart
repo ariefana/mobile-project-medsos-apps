@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medsos_app/pages/homepage.dart';
-import 'package:medsos_app/pages/PesanPage.dart';
+import 'package:medsos_app/pages/messagePage.dart';
 
 class MyMainPage extends StatefulWidget {
   const MyMainPage({super.key});
