@@ -21,9 +21,9 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
   // Data dummy untuk pesan obrolan
   final List<Message> messages = [
     Message(text: 'Hai', isSentByMe: true),
-    Message(text: 'Peuna?', isSentByMe: false),
-    Message(text: 'Pu haba gata disinan?', isSentByMe: true),
-    Message(text: 'Alhamdulillah get', isSentByMe: false),
+    Message(text: 'Ada apa?', isSentByMe: false),
+    Message(text: 'Apa Kabar', isSentByMe: true),
+    Message(text: 'Alhamdulillah baik', isSentByMe: false),
     Message(text: 'Oke', isSentByMe: true),
   ];
 
