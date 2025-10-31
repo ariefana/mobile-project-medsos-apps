@@ -1,4 +1,4 @@
-import 'dart:ffi';
+// import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import '../models.dart'; // Impor model
@@ -202,7 +202,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
             IconButton(
               icon: Icon(Icons.send, color: Colors.black),
               onPressed: () {
-                print(_messageController.text);
+                // print(_messageController.text);
               },
             ),
           ],
