@@ -1,7 +1,9 @@
 // import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import '../models.dart'; // Impor model
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+import 'package:ionicons/ionicons.dart';
+import 'package:lucide_icons/lucide_icons.dart';
 
 class ChatDetailPage extends StatefulWidget {
   final String name;
@@ -200,7 +202,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
             ),
             // Anda bisa tambahkan tombol kirim di sini jika mau
             IconButton(
-              icon: Icon(Icons.send, color: Colors.black),
+              icon: Icon(LucideIcons.send, color: Colors.black),
               onPressed: () {
                 // print(_messageController.text);
               },
@@ -227,21 +229,21 @@ void _showAttachmentMenu(BuildContext context) {
           mainAxisSize: MainAxisSize.min,
           children: [
             ListTile(
-              leading: const Icon(Icons.image, color: Colors.black,),
+              leading: const Icon(EvaIcons.image, color: Colors.blue,),
               title: const Text('Media', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
               onTap: () {
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              leading: const Icon(Icons.gif, color: Colors.black,),
+              leading: const Icon(Icons.gif, color: Colors.amber,),
               title: const Text('Stiker dan GIF', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
               onTap: () {
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              leading: const Icon(Icons.camera_alt, color: Colors.black,),
+              leading: const Icon(Ionicons.camera, color: Colors.black,),
               title: const Text('Kamera', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
               onTap: () {
                 Navigator.pop(context);
@@ -269,7 +271,7 @@ void _showSettingsMenu(BuildContext context) {
           mainAxisSize: MainAxisSize.min,
           children: [
             ListTile(
-              trailing: const Icon(Icons.notifications_off, color: Colors.black,),
+              trailing: const Icon(Ionicons.notifications_off, color: Colors.black,),
               title: const Text('Senyapkan', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
               onTap: () {
                 Navigator.pop(context);
