@@ -36,7 +36,7 @@ class _MessagesPageState extends State<MessagesPage> {
 
   @override
   Widget build(BuildContext context) {
-    const Color primaryGreen = Color.fromARGB(255, 36, 105, 40);
+    const Color primaryGreen = Color.fromARGB(255, 21, 75, 24);
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -59,6 +59,7 @@ class _MessagesPageState extends State<MessagesPage> {
               child: Container(
                 decoration: colorDecoration,
                 child: TextField(
+                  style: const TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                     hintText: 'Cari',
                     prefixIcon: const Icon(Icons.search, color: Colors.white),

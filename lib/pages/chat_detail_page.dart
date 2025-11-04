@@ -1,5 +1,9 @@
+// import 'dart:ffi';
 import 'package:flutter/material.dart';
 import '../models.dart'; // Impor model
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+import 'package:ionicons/ionicons.dart';
+import 'package:lucide_icons/lucide_icons.dart';
 
 class ChatDetailPage extends StatefulWidget {
   final String name;
@@ -19,9 +23,9 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
   // Data dummy untuk pesan obrolan
   final List<Message> messages = [
     Message(text: 'Hai', isSentByMe: true),
-    Message(text: 'Peuna?', isSentByMe: false),
-    Message(text: 'Pu haba gata disinan?', isSentByMe: true),
-    Message(text: 'Alhamdulillah get', isSentByMe: false),
+    Message(text: 'Ada apa?', isSentByMe: false),
+    Message(text: 'Apa Kabar', isSentByMe: true),
+    Message(text: 'Alhamdulillah baik', isSentByMe: false),
     Message(text: 'Oke', isSentByMe: true),
   ];
 
@@ -32,10 +36,18 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
     const Color primaryGreen = Color(0xFF2E7D32);
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color.fromARGB(255, 238, 231, 231),
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white),
-        backgroundColor: primaryGreen,
+        // backgroundColor: primaryGreen,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [
+              Color.fromRGBO(36, 88, 72, 100),
+              Color.fromRGBO(48, 186, 78, 100),
+            ])
+          ),
+        ),
         elevation: 0,
         titleSpacing: 0.0,
         title: Row(
@@ -66,7 +78,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
         actions: [
           IconButton(
             icon: const Icon(Icons.more_vert, color: Colors.white),
-            onPressed: () {},
+            onPressed: () => _showSettingsMenu(context),
           ),
         ],
       ),
@@ -159,25 +171,27 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Color.fromARGB(255, 238, 231, 231),
         border: Border(top: BorderSide(color: Colors.grey[200]!)),
       ),
       child: SafeArea(
         child: Row(
           children: [
             IconButton(
-              icon: Icon(Icons.add_circle, color: color, size: 30),
-              onPressed: () {},
+              icon: Icon(Icons.add_circle, color: Colors.black, size: 30),
+              onPressed: () => _showAttachmentMenu(context),
             ),
             Expanded(
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                height: 33,
+                padding: const EdgeInsets.symmetric(horizontal: 13.0),
                 decoration: BoxDecoration(
-                  color: Colors.grey[100],
+                  // color: Colors.grey[500],
                   borderRadius: BorderRadius.circular(25.0),
-                  // border: BoxBorder.all(color: Colors.black, width: 1)
+                  border: BoxBorder.all(color: Colors.black, width: 1)
                 ),
                 child: TextField(
+                  textInputAction: TextInputAction.go,
                   controller: _messageController,
                   decoration: const InputDecoration(
                     hintText: 'Pesan...',
@@ -187,13 +201,99 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
               ),
             ),
             // Anda bisa tambahkan tombol kirim di sini jika mau
-            // IconButton(
-            //   icon: Icon(Icons.send, color: color),
-            //   onPressed: () { /* kirim pesan */ },
-            // ),
+            IconButton(
+              icon: Icon(LucideIcons.send, color: Colors.black),
+              onPressed: () {
+                // print(_messageController.text);
+              },
+            ),
           ],
         ),
       ),
     );
   }
+}
+
+// Helper Function untuk Modal Bottom Sheet
+void _showAttachmentMenu(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    backgroundColor: Colors.white,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+    ),
+    builder: (BuildContext context) {
+      return Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ListTile(
+              leading: const Icon(EvaIcons.image, color: Colors.blue,),
+              title: const Text('Media', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.gif, color: Colors.amber,),
+              title: const Text('Stiker dan GIF', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Ionicons.camera, color: Colors.black,),
+              title: const Text('Kamera', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      );
+    }
+  );
+}
+
+// Helper Function untuk Modal Bottom Sheet in setting
+void _showSettingsMenu(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    backgroundColor: Colors.white,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+    ),
+    builder: (BuildContext context) {
+      return Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ListTile(
+              trailing: const Icon(Ionicons.notifications_off, color: Colors.black,),
+              title: const Text('Senyapkan', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              trailing: const Icon(Icons.person_off, color: Colors.red,),
+              title: const Text('Blokir', style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              trailing: const Icon(Icons.report, color: Colors.red,),
+              title: const Text('Laporkan', style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      );
+    }
+  );
 }
